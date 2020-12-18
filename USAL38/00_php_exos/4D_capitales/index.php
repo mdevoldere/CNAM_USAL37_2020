@@ -28,10 +28,10 @@ function capitalCity(string $nom_pays)
 }
 
 
-$capitale = capitalCity('France'); // affiche Paris
+$capitale = capitalCity('France'); // affiche "Paris"
 echo $capitale;
-echo capitalCity('Belgique'); // affiche Bruxelles
-echo capitalCity('Suisse'); // affiche Capitale inconnue
+echo capitalCity('Belgique'); // affiche "Bruxelles"
+echo capitalCity('Suisse'); // affiche "Capitale inconnue"
 
 
 
