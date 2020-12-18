@@ -5,24 +5,26 @@ namespace Vehicules;
 
 class Voiture 
 {
-    public $marque = "Peugeot";
+    private string $marque = "Peugeot";
+
+    private string $modele = "207";
+
+    public function getMarque()
+    {
+        return $this->marque;
+    }
+
+    public function setMarque(string $nouvelleMarque)
+    {
+        $longueur = strlen($nouvelleMarque);
+
+        if($longueur >= 2) {
+            $this->marque = $nouvelleMarque;
+        }
+        else {
+            throw new \Exception("Nom trop court !");
+        }
+        
+    }
 
 }  // fin de la classe Voiture  
-
-
-$v1 = new Voiture();
-
-echo $v1->marque;
-
-echo "\n";
-
-$v2 = new Voiture();
-
-echo $v2->marque;
-
-$v1->marque = "Citroën";
-
-echo "\n";
-echo $v1->marque;
-echo "\n";
-echo $v2->marque;
