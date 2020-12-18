@@ -19,12 +19,12 @@ echo "\n";
 
 
 
-
 $v2 = new Voiture();
 
 $v2->setMarque("Honda");
 
-$v2->modele = "2"; // ca plante !
+$v2->setModele("Civic");
+
 
 var_export($v2);
 

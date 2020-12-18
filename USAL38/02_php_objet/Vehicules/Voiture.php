@@ -5,9 +5,9 @@ namespace Vehicules;
 
 class Voiture 
 {
-    private string $marque = "Peugeot";
+    private $marque = "Peugeot";
 
-    private string $modele = "207";
+    private $modele = "207";
 
     public function getMarque()
     {
@@ -26,5 +26,12 @@ class Voiture
         }
         
     }
+
+    public function setModele(string $nouveauModele)
+    {
+        $this->modele = $nouveauModele;
+    }
+    
+
 
 }  // fin de la classe Voiture  
