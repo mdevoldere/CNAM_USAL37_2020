@@ -1,6 +1,6 @@
+DROP DATABASE IF EXISTS usal37_tp_bank;
 
 CREATE DATABASE IF NOT EXISTS usal37_tp_bank DEFAULT CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci';
-
 
 USE usal37_tp_bank;
 
@@ -21,13 +21,46 @@ CREATE TABLE accounts(
    FOREIGN KEY(bank_id) REFERENCES banks(bank_id)
 );
 
-/*
-AJOUTER 3 banques 'Crédit Mutuel' 'Crédit Agricole' 'Caisse d'épargne'
+INSERT INTO banks (bank_id, bank_name) VALUES 
+(1001, "Crédit Mutuel"),
+(1002, "Crédit Agricole"),
+(1003, "Caisse d'épargne");
 
-AJOUTER 2 comptes bancaires par banque
-- le champ 'account_owner' contient le nom et prénom du titulaire du compte séparés par un espace.
+INSERT INTO accounts 
+(account_id, account_owner, bank_id) 
+VALUES 
+(10, "Dev Mike", 1001),
+(11, "Doe Jon", 1001),
+(20, "Nymous Ano", 1002),
+(21, "Neymar Jean", 1002),
+(30, "Dupont Marie", 1003),
+(31, "Ronaldo Cristiano", 1003);
 
 
+DELIMITER $
 
+CREATE PROCEDURE transfer
+(
+IN amount INT,  
+IN from_account INT, 
+IN to_account INT 
+)
+BEGIN
+	DECLARE current_amount INT;
+    SELECT account_balance INTO current_amount FROM accounts WHERE account_id=from_account;
+	IF amount > 0 AND current_amount >= amount 
+    THEN 
+		UPDATE accounts SET account_balance=account_balance - amount 
+		WHERE account_id=from_account;
+    
+		UPDATE accounts SET account_balance=account_balance + amount 
+		WHERE account_id=to_account;
+	ELSE 
+		SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = "Le transfert n'a pas pu être effectué";
+    END IF;
+	
+END $
 
+DELIMITER ;
 
