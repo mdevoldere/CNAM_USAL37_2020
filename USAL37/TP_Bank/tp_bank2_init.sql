@@ -16,7 +16,7 @@ CREATE TABLE accounts(
    account_owner VARCHAR(255) NOT NULL,
    account_balance DECIMAL(10,2) NOT NULL DEFAULT 0,
    account_overdraft INT NOT NULL DEFAULT 0,
-   bank_id INT NOT NULL,
+   bank_id INT NULL,
    PRIMARY KEY(account_id),
    FOREIGN KEY(bank_id) REFERENCES banks(bank_id)
 );
@@ -27,14 +27,17 @@ INSERT INTO banks (bank_id, bank_name) VALUES
 (1003, "Caisse d'épargne");
 
 INSERT INTO accounts 
-(account_id, account_owner, bank_id) 
+(account_id, account_owner, account_balance, bank_id) 
 VALUES 
-(10, "Dev Mike", 1001),
-(11, "Doe Jon", 1001),
-(20, "Nymous Ano", 1002),
-(21, "Neymar Jean", 1002),
-(30, "Dupont Marie", 1003),
-(31, "Ronaldo Cristiano", 1003);
+(10, "Mike", 2144, 1001),
+(11, "Jon", 3568, 1001),
+(12, "Jack", 658, NULL),
+(20, "Léa", 3250, 1002),
+(21, "Jean", 14652, 1002),
+(22, "Réda", 3947, NULL),
+(30, "Marie", 4001, 1003),
+(31, "Cristiano", 799521, 1003),
+(32, "Tom", 36447, NULL);
 
 
 DELIMITER $
@@ -63,4 +66,8 @@ BEGIN
 END $
 
 DELIMITER ;
+
+
+SELECT * FROM banks;
+SELECT * FROM accounts;
 
