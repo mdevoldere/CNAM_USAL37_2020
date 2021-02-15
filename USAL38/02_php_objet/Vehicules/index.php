@@ -1,30 +1,19 @@
 <?php 
 require_once 'Voiture.php';
 
-use Vehicules\Voiture;
 
 
 
 
+$v1 = new Voiture('Renault', 'Megane');
 
-$v1 = new Voiture();
+$v2 = new Voiture('Peugeot', '3008');
 
-$v1->setMarque("Suziki");
+$v1->set_marque("Opel");
 
-var_export($v1);
+$v1->afficherVoiture();
 
-echo "\n";
-
-
-
+$v2->afficherVoiture();
 
 
-$v2 = new Voiture();
-
-$v2->setMarque("Honda");
-
-$v2->setModele("Civic");
-
-
-var_export($v2);
 

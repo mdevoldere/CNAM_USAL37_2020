@@ -1,7 +1,7 @@
 use usal37_tp_bank;
 
 
-SELECT * FROM banks;
+SELECT * FROM banks WHERE bank_id=1002;
 
 SELECT * FROM accounts;
 
