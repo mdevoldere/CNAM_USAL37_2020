@@ -26,13 +26,7 @@
         <main id="legumes" class="inner">
             <?php
                 require dirname(__DIR__).'/Router.php';
-
                 $router = new Router();
-                
-
-                //echo $view;
-
-                //echo $controller;
             ?>
         </main>
 
